@@ -10,10 +10,11 @@
 [# endif #]
 ]{beamer}
 
-% You should have an imports section
+% https://tex.stackexchange.com/questions/123700/how-to-use-local-beamer-theme-in-project-source-folder
+% \usetheme won't work if loading from nested directory!
 [- IMPORTS -]
 \usepackage[utf8]{inputenc}
-\usetheme[
+\usepackage[
 [#- if options.dark_mode -#]
   darkmode,
 [#- endif -#]
@@ -35,7 +36,7 @@
 [#- else  -#]
   customfont,
 [#- endif -#]
-]{pureminimalistic}
+]{latex-beamer-pure-minimalistic/beamerthemepureminimalistic}
 
 \title[-doc.short_title-]{[-doc.title-]}
 \author{%

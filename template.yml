@@ -68,10 +68,11 @@ files:
   - latex-beamer-pure-minimalistic/beamerinnerthemepureminimalistic.sty
   - latex-beamer-pure-minimalistic/beamerouterthemepureminimalistic.sty
   - latex-beamer-pure-minimalistic/beamerthemepureminimalistic.sty
-  - latex-beamer-pure-minimalistic/logos/header_logo_darkmode.png
-  - latex-beamer-pure-minimalistic/logos/header_logo.png
-  - latex-beamer-pure-minimalistic/logos/institute_logo.png
-  - latex-beamer-pure-minimalistic/logos/institute_logo_darkmode.png
+  # Logos need to be relative to template.tex!
+  - logos/header_logo_darkmode.png
+  - logos/header_logo.png
+  - logos/institute_logo.png
+  - logos/institute_logo_darkmode.png
   - latex-beamer-pure-minimalistic/LICENSE
 packages:
   - amsmath
