@@ -17,3 +17,9 @@ jobs:
           node-version: 16
       - run: npm install -g jtex
       - run: jtex check
+      - run: npm install -g myst-cli
+      - run: myst build example.md --yes
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: export/
