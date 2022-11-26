@@ -1,0 +1,4 @@
+[submodule "latex-beamer-pure-minimalistic"]
+	path = latex-beamer-pure-minimalistic
+	url = https://github.com/kai-tub/latex-beamer-pure-minimalistic.git
+	branch = master

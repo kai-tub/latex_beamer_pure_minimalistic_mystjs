@@ -1,0 +1,89 @@
+jtex: v1
+title: 'LaTeX Beamer Pure Minimalistic'
+description: 'A presentation theme for LaTeX-Beamer that is truly minimalistic, so that the focus is on the presenter and not on the slides.'
+version: 1.0.0
+license: GPL-3.0-or-later
+source: 'https://github.com/kai-tub/latex-beamer-pure-minimalistic'
+thumbnail: ./thumbnail.png
+authors:
+  - name: 'Kai Norman Clasen'
+    website: 'https://github.com/kai-tub/latex-beamer-pure-minimalistic-mystjs'
+    affiliations:
+      - 'None'
+tags:
+  - Beamer
+  - minimalistic
+  - dark-mode
+  - simple
+  - clean
+  - customizable
+doc:
+  - id: title
+    required: true
+  - id: short_title
+  - id: authors
+  - id: bibliography
+  - id: date
+options:
+  - id: draft
+    description: Mark the document as draft
+    type: boolean
+    default: false
+  - id: dark_mode
+    description: Enable (default) or disable dark mode
+    type: boolean
+    default: true
+  - id: show_max_slides
+    description: "Whether or not to show total number of slides in footer (default: false)"
+    type: boolean
+    default: false
+  - id: modern_aspect_ratio
+    description: "Whether or not to use modern 16:9 aspect ratio (default: true)"
+    type: boolean
+    default: true
+  - id: font
+    description: "Select one of the pre-configured fonts (`fira` or `noto`) or disable it with `plain` to use default font."
+    type: choice
+    default: fira
+    choices:
+      - fira
+      - noto
+      - plain  # internally customfont
+  - id: outline
+    description: "Whether or not to include an Outline (ToC) slide after title slide (default: true)"
+    type: boolean
+    default: true
+  - id: no_footer
+    description: "Whether or not to remove the footer (default: false, i.e., use footer)"
+    type: boolean
+    default: false
+  - id: no_footer_logo
+    description: "Whether or not to remove the logo from the footer (default false, i.e., keep logo)"
+    type: boolean
+    default: false
+files:
+  - template.tex
+  - latex-beamer-pure-minimalistic/beamercolorthemepureminimalistic.sty
+  - latex-beamer-pure-minimalistic/beamerfontthemepureminimalistic.sty
+  - latex-beamer-pure-minimalistic/beamerinnerthemepureminimalistic.sty
+  - latex-beamer-pure-minimalistic/beamerouterthemepureminimalistic.sty
+  - latex-beamer-pure-minimalistic/beamerthemepureminimalistic.sty
+  - latex-beamer-pure-minimalistic/logos/header_logo_darkmode.png
+  - latex-beamer-pure-minimalistic/logos/header_logo.png
+  - latex-beamer-pure-minimalistic/logos/institute_logo.png
+  - latex-beamer-pure-minimalistic/logos/institute_logo_darkmode.png
+  - latex-beamer-pure-minimalistic/LICENSE
+packages:
+  - amsmath
+  - fira
+  - noto
+  - silence
+  - ifthen
+  - iftex
+  - fontenc
+  - FiraSans
+  - FiraMono
+  - etoolbox
+  - calc
+  # template specific
+  - inputenc

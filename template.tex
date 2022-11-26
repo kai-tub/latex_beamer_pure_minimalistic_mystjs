@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copy in your template with your latex document!
+
+\documentclass[
+[#- if options.modern_aspect_ratio -#]
+  aspectratio=169,
+[#- endif -#]
+[#- if options.draft -#]
+  draft,
+[# endif #]
+]{beamer}
+
+% You should have an imports section
+[- IMPORTS -]
+\usepackage[utf8]{inputenc}
+\usetheme[
+[#- if options.dark_mode -#]
+  darkmode,
+[#- endif -#]
+[#- if options.show_max_slides -#]
+  showmaxslides,
+[#- endif -#]
+[#- if options.no_footer -#]
+  nofooter,
+[#- endif -#]
+[#- if options.no_footer_logo -#]
+  nofooterlogo,
+[#- endif -#]
+[#- if options.font == 'fira' -#]
+%# No changes, as this is the current default #%
+[#- elif options.font == 'noto' -#]
+  noto,
+[#- elif options.font == 'plain' -#]
+  customfont,
+[#- else  -#]
+  customfont,
+[#- endif -#]
+]{pureminimalistic}
+
+\title[-doc.short_title-]{[-doc.title-]}
+\author{%
+  [# for author in doc.authors #]
+  [--author.name--]
+  [# endfor #]
+}
+% \institute{[doc.institute]}
+% \newdate{articleDate}{[-doc.date.day-]}{[-doc.date.month-]}{[-doc.date.year-]}
+% \date{\displaydate{articleDate}}
+
+\begin{document}
+\maketitle
+
+[# if options.outline #]
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+[# endif #]
+
+[-CONTENT-]
+
+\end{document}
