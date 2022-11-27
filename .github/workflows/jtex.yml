@@ -28,7 +28,7 @@ jobs:
             && ls
             && tlmgr update --self
             && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
-            && build example.md --yes
+            && myst build example.md --yes
             "
       - uses: actions/upload-artifact@v3
         with:
