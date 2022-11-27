@@ -25,11 +25,12 @@ jobs:
           # && ls latex-beamer-pure-minimalistic/
           # && tlmgr update --self
       - uses: docker://ghcr.io/kai-tub/texlive-full-mystjs:latest
-        entrypoint: /bin/bash
-        args: >
-          -c "
-            myst build example.md --yes
-          "
+        with:
+          entrypoint: /bin/bash
+          args: >
+            -c "
+              myst build example.md --yes
+            "
         # - run: >
         #   /bin/bash
         #   -c "
