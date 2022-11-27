@@ -8,6 +8,7 @@ jobs:
   test:
     name: test template.yml
     runs-on: ubuntu-latest
+    container: ghcr.io/kai-tub/texlive-full-mystjs:latest
     steps:
       - uses: actions/checkout@v3
         with:
@@ -19,26 +20,26 @@ jobs:
       # - run: jtex check
       # - run: npm install -g myst-cli
       # - run: myst build example.md --yes
-      - uses: docker://ghcr.io/kai-tub/texlive-small-mystjs:latest
-        with:
-          entrypoint: /bin/bash
-          args: >
-            -c "
-            jtex check
-            && echo 'ls'
-            && ls
-            && echo 'nested ls'
-            && ls latex-beamer-pure-minimalistic/
-            && tlmgr update --self
-            && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
-            && myst build example.md --yes
-            "
+          # entrypoint: /bin/bash
+          # args: >
+          # && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
+          # && ls latex-beamer-pure-minimalistic/
+          && tlmgr update --self
+      - run: >
+          /bin/bash
+          -c "
+          jtex check
+          && echo 'ls'
+          && ls
+          && echo 'nested ls'
+          && myst build example.md --yes
+          "
       - uses: actions/upload-artifact@v3
         with:
           name: build-output
           path: export/
-      - uses: actions/upload-artifact@v3
-        with:
-          name: build-output
-          path: _build/
-      - run: file export/example.pdf
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: build-output
+      #     path: _build/
+      # - run: file export/example.pdf
