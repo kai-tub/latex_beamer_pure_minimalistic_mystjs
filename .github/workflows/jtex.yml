@@ -25,7 +25,9 @@ jobs:
           args: >
             -c "
             jtex check
+            && echo "ls"
             && ls
+            && echo "nested ls"
             && tlmgr update --self
             && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
             && myst build example.md --yes
@@ -34,3 +36,8 @@ jobs:
         with:
           name: build-output
           path: export/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: build-output
+          path: _build/
+      - run: file export/example.pdf
