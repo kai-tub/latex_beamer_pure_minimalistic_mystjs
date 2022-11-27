@@ -8,32 +8,37 @@ jobs:
   test:
     name: test template.yml
     runs-on: ubuntu-latest
-    container: ghcr.io/kai-tub/texlive-full-mystjs:latest
+    # container: ghcr.io/kai-tub/texlive-full-mystjs:latest
     steps:
       - uses: actions/checkout@v3
         with:
-            submodules: recursive
+            submodules: true
       # - uses: actions/setup-node@v3
       #   with:
       #     node-version: 16
       # - run: npm install -g jtex
       # - run: jtex check
       # - run: npm install -g myst-cli
-      # - run: myst build example.md --yes
           # entrypoint: /bin/bash
           # args: >
           # && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
           # && ls latex-beamer-pure-minimalistic/
           # && tlmgr update --self
-      - run: >
-          /bin/bash
+      - uses: docker://ghcr.io/kai-tub/texlive-full-mystjs:latest
+        entrypoint: /bin/bash
+        args: >
           -c "
-          jtex check
-          && echo 'ls'
-          && ls
-          && echo 'nested ls'
-          && myst build example.md --yes
+            myst build example.md --yes
           "
+        # - run: >
+        #   /bin/bash
+        #   -c "
+        #   jtex check
+        #   && echo 'ls'
+        #   && ls
+        #   && echo 'nested ls'
+        #   && myst build example.md --yes
+        #   "
       - uses: actions/upload-artifact@v3
         with:
           name: build-output
