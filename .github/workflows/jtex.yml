@@ -12,13 +12,24 @@ jobs:
       - uses: actions/checkout@v3
         with:
             submodules: recursive
-      - uses: actions/setup-node@v3
+      # - uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
+      # - run: npm install -g jtex
+      # - run: jtex check
+      # - run: npm install -g myst-cli
+      # - run: myst build example.md --yes
+      - uses: docker://ghcr.io/kai-tub/texlive-small-mystjs:latest
         with:
-          node-version: 16
-      - run: npm install -g jtex
-      - run: jtex check
-      - run: npm install -g myst-cli
-      - run: myst build example.md --yes
+          entrypoint: /bin/bash
+          args: >
+            -c "
+            jtex check
+            && ls
+            && tlmgr update --self
+            && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
+            && build example.md --yes
+            "
       - uses: actions/upload-artifact@v3
         with:
           name: build-output
