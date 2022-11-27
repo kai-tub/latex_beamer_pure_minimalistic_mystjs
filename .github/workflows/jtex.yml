@@ -24,7 +24,7 @@ jobs:
           # args: >
           # && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
           # && ls latex-beamer-pure-minimalistic/
-          && tlmgr update --self
+          # && tlmgr update --self
       - run: >
           /bin/bash
           -c "
