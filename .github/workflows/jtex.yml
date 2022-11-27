@@ -25,9 +25,10 @@ jobs:
           args: >
             -c "
             jtex check
-            && echo "ls"
+            && echo 'ls'
             && ls
-            && echo "nested ls"
+            && echo 'nested ls'
+            && ls latex-beamer-pure-minimalistic/
             && tlmgr update --self
             && tlmgr install --force --reinstall silence appendixnumberbeamer fira fontaxes mwe noto csquotes fontspec babel luatexja haranoaji haranoaji-extra --repository http://ftp.fau.de/ctan/systems/texlive/tlnet/
             && myst build example.md --yes
